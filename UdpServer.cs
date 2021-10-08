@@ -4,6 +4,16 @@ using System.Threading;
 
 namespace WatchServer
 {
+    public class Controllers
+    {
+        public long SN;
+        public long Index;
+        public Controllers(long serialNumber, long latestIndex)
+        {
+            SN = serialNumber;
+            Index = latestIndex;
+        }
+    }
     internal class UdpServer : Helpers
     {
 

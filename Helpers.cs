@@ -30,7 +30,8 @@ namespace WatchServer
 
             long recordCardNO = ByteToLong(recv, 16, 4);
 
-            string recordTime = $"{recv[20]}{recv[21]}-{recv[22]}-{recv[23]} {recv[24]}:{recv[25]}:{recv[26]}";
+            string recordTime = string.Format("{0:X2}{1:X2}-{2:X2}-{3:X2} {4:X2}:{5:X2}:{6:X2}",
+                recv[20], recv[21], recv[22], recv[23], recv[24], recv[25], recv[26]);
             int reason = recv[27];
 
             if (recordType == 0)
