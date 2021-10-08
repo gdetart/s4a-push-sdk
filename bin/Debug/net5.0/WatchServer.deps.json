@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "WatchServer/1.0.0": {
+        "dependencies": {
+          "n3kAdrtC": "9.19.23010.50506"
+        },
+        "runtime": {
+          "WatchServer.dll": {}
+        }
+      },
+      "n3kAdrtC/9.19.23010.50506": {
+        "runtime": {
+          "n3kAdrtC.dll": {
+            "assemblyVersion": "9.19.23010.50506",
+            "fileVersion": "9.19.23010.50506"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WatchServer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "n3kAdrtC/9.19.23010.50506": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
