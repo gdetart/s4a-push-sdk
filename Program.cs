@@ -11,17 +11,18 @@ namespace WatchServer
             WatchingServer server = new("192.168.0.122", "192.168.0.27", 153162793, 6005);
             Thread UdpServer = new(server.WatchingServerRuning);
             UdpServer.Start();
-           var key= Console.ReadLine();
+            string key = Console.ReadLine();
             if (key == "ok")
             {
-                server.ButtonsRepo.ForEach(Button=> {
+                server.ButtonsRepo.ForEach(Button =>
+                {
                     Console.WriteLine(Button.Description);
                     Console.WriteLine(Button.SerialNumber);
                     Console.WriteLine(Button.Time);
                     Console.WriteLine(Button.DoorNumber);
                 });
             }
-            
+
 
         }
 
@@ -120,9 +121,9 @@ namespace WatchServer
                 if (!udpserver.IsWatching())
                 {
                     Console.WriteLine(" Failed to monitor state");
-                  
+
                 }
-               
+
                 List<Controllers> allControllers = new List<Controllers> { };
                 int recv_cnt;
                 while (true)
@@ -140,8 +141,8 @@ namespace WatchServer
                             long sn;
                             long recordIndexGet;
                             bool exists = true;
-                            sn = byteToLong(buff, 4, 4); //Get serial number
-                            recordIndexGet = byteToLong(buff, 8, 4); //Get Record Index number
+                            sn = ByteToLong(buff, 4, 4); //Get serial number
+                            recordIndexGet = ByteToLong(buff, 8, 4); //Get Record Index number
 
                             //if there is a controller check --if that controller exists in the array if not add new 
                             if (allControllers.Count > 0)
@@ -179,7 +180,7 @@ namespace WatchServer
                                     {
                                         s.Index = recordIndexGet;
 
-                                        ReturnRecordInfo(buff);
+                                        GetRecordInfo(buff);
 
                                     }
                                 }

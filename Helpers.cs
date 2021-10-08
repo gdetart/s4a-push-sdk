@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace WatchServer
 {
     public class Helpers
     {
-        public long byteToLong(byte[] buff, int start, int len)
+        public List<CardEvent> CardsRepo = new();
+        public List<ButtonEvent> ButtonsRepo = new();
+        public List<AlarmEvent> AlarmsRepo = new();
+        public static long ByteToLong(byte[] buff, int start, int len)
         {
             long val = 0;
             for (int i = 0; i < len && i < 4; i++)
@@ -15,12 +17,9 @@ namespace WatchServer
             }
             return val;
         }
-        public List<CardEvent> CardsRepo = new();
-        public List<ButtonEvent> ButtonsRepo = new();
-        public List<AlarmEvent> AlarmsRepo = new();
 
 
-        public void ReturnRecordInfo(byte[] recv)
+        public void GetRecordInfo(byte[] recv)
         {
             int recordType = recv[12];
 
@@ -29,7 +28,7 @@ namespace WatchServer
             int recordDoorNO = recv[14];
             _ = recv[15];
 
-            long recordCardNO = byteToLong(recv, 16, 4);
+            long recordCardNO = ByteToLong(recv, 16, 4);
 
             string recordTime = $"{recv[20]}{recv[21]}-{recv[22]}-{recv[23]} {recv[24]}:{recv[25]}:{recv[26]}";
             int reason = recv[27];
@@ -75,7 +74,7 @@ namespace WatchServer
             }
         }
         public string GetReasonDetailEnglish(int Reason) //English description
-        {   
+        {
             if (Reason > 45)
             {
                 return "";
@@ -137,4 +136,4 @@ namespace WatchServer
         };
     }
 
-    }
+}
